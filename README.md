@@ -42,43 +42,43 @@ jps
 
 В новом окне терминала буду работать с HDFS, который работает внутри Docker-контейнера (первое окно не закрываю, иначе не будет работать).  
 Устанавливаю Hive, чтобы выполнять SQL-запросы.   
-Подключаюсь к контейнеру с правами root:  
+1. Подключаюсь к контейнеру с правами root:  
 
 docker exec -it --user root hadoop-cluster bash  
 
-Обновляю список пакетов и установливаю wget  
+2. Обновляю список пакетов и установливаю wget  
 
 apt-get update && apt-get install -y wget
 
 <img width="1167" height="536" alt="3" src="https://github.com/user-attachments/assets/1bf2a099-81da-43a3-8a5f-ce0d3683f4ac" />
 
-Скачиваю Hive  
+3. Скачиваю Hive  
 
 wget https://archive.apache.org/dist/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz  
 
 <img width="1439" height="307" alt="4" src="https://github.com/user-attachments/assets/1ed1e148-7f36-47ff-b12d-5e9b71088a82" />
 
-Распаковываю архив  
+4. Распаковываю архив  
 
 tar -xzvf apache-hive-3.1.3-bin.tar.gz
 
 <img width="1090" height="607" alt="5" src="https://github.com/user-attachments/assets/329e472a-5a5c-4b24-af88-29f1ddae5ff0" />
 
-Перемещаю Hive в удобную папку  
+5. Перемещаю Hive в удобную папку  
 
 mv apache-hive-3.1.3-bin /opt/hive
 
 Настраиваю переменные окружения  
-Добавляю Hive в PATH  
+1. Добавляю Hive в PATH  
 
 echo 'export HIVE_HOME=/opt/hive' >> ~/.bashrc  
 echo 'export PATH=$PATH:$HIVE_HOME/bin' >> ~/.bashrc
 
-Применяю изменения  
+2. Применяю изменения  
 
 source ~/.bashrc
 
-Проверяю
+3. Проверяю
 
 echo $HIVE_HOME
 
@@ -98,18 +98,18 @@ hdfs dfs -ls /user/hive/
 <img width="977" height="191" alt="7" src="https://github.com/user-attachments/assets/f7c5a27b-0487-47be-8e32-663fe17447c8" />
 
 Инициализирую Metastore  
-Перехожу в папку Hive  
+1. Перехожу в папку Hive  
 
 cd /opt/hive
 
-Инициализирую схему Metastore (используя Derby)
+2. Инициализирую схему Metastore (используя Derby)
 
 bin/schematool -dbType derby -initSchema
 
 <img width="1460" height="310" alt="8" src="https://github.com/user-attachments/assets/77b1e711-641a-4430-8439-5bbd77bb5797" />
 <img width="502" height="117" alt="9" src="https://github.com/user-attachments/assets/a0992c55-5449-4568-8ed4-4de50cff32bc" />
 
-Запустила Hive  
+3. Запустила Hive  
 <img width="1469" height="354" alt="10" src="https://github.com/user-attachments/assets/9f99baca-7785-4357-9a95-62a6e034a8e3" />
 
 Создала файл с sql кодом bd.sql, в котором код создания и заполнения таблиц разных моделей: звезда, снежинка, Data Vault. Его содержимое есть в репозитории.  
