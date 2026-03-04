@@ -10,3 +10,4 @@
 docker run -it -p 9870:9870 -p 8088:8088 -p 9864:9864 --name hadoop-cluster jporeilly/apache-hadoop:amd  
 
 Началась загрузка.  
+<img width="1478" height="808" alt="1" src="https://github.com/user-attachments/assets/98da8bd0-cb62-4585-a36b-96d6bebd81f7" />
